@@ -117,8 +117,8 @@ class _LoginPageState extends State<LoginPage> {
 
                       //Slider Container properties
                       options: CarouselOptions(
-                        //TODO - set height to parentHeight*0.45
-                        height: 750,
+                        
+                        height: MediaQuery.of(context).size.height * 0.9,
 
                         enlargeCenterPage: true,
                         autoPlay: true,
@@ -131,7 +131,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-               
               ),
             ),
           ],
