@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'input_field.dart';
-import 'login_button.dart';
+import './Components/input_field.dart';
+import './Components/login_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
