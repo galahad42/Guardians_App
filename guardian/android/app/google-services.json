@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "978248307905",
+    "project_id": "guardian-7397e",
+    "storage_bucket": "guardian-7397e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978248307905:android:a505fb3f41ce1fede4f040",
+        "android_client_info": {
+          "package_name": "com.example.guardian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978248307905-oe19dcg9184v7ve1ahkld6v2gg9k1olf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9Fu1wjBeAKT0mvN0a6Eu8Wr5ehzKxnUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978248307905-oe19dcg9184v7ve1ahkld6v2gg9k1olf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
