@@ -42,23 +42,23 @@ class _NewEntryState extends State<NewEntry> {
   bool isCompleted = false;
   List<Step> getSteps() => [
         Step(
-            state: currentstep > 0 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 0,
+            state: currentStep > 0 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 0,
             title: const Text('ID Proof'),
             content: newEntryPage1(context)),
         Step(
-            state: currentstep > 1 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 1,
+            state: currentStep > 1 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 1,
             title: const Text('Personal Details'),
             content: newEntryPage2(context)),
         Step(
-            state: currentstep > 2 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 2,
+            state: currentStep > 2 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 2,
             title: const Text('Health Status'),
             content: newEntryPage3(context)),
         Step(
-            state: currentstep > 3 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 3,
+            state: currentStep > 3 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 3,
             title: const Text('Symptoms'),
             content: newEntryPage4(context)),
       ];
