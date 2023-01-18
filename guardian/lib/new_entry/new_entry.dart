@@ -5,6 +5,11 @@ const TextStyle kFieldHeading = TextStyle(
     fontWeight: FontWeight.bold,
     color: Color.fromARGB(255, 6, 53, 92));
 
+const TextStyle kCheckmarkText = TextStyle(
+    fontSize: 15.0,
+    fontStyle: FontStyle.italic,
+    color: Color.fromARGB(255, 6, 53, 92));
+
 class NewEntry extends StatefulWidget {
   const NewEntry({super.key});
 
@@ -37,23 +42,23 @@ class _NewEntryState extends State<NewEntry> {
   bool isCompleted = false;
   List<Step> getSteps() => [
         Step(
-            state: currentStep > 0 ? StepState.complete : StepState.indexed,
-            isActive: currentStep >= 0,
+            state: currentstep > 0 ? StepState.complete : StepState.indexed,
+            isActive: currentstep >= 0,
             title: const Text('ID Proof'),
             content: newEntryPage1(context)),
         Step(
-            state: currentStep > 1 ? StepState.complete : StepState.indexed,
-            isActive: currentStep >= 1,
+            state: currentstep > 1 ? StepState.complete : StepState.indexed,
+            isActive: currentstep >= 1,
             title: const Text('Personal Details'),
             content: newEntryPage2(context)),
         Step(
-            state: currentStep > 2 ? StepState.complete : StepState.indexed,
-            isActive: currentStep >= 2,
+            state: currentstep > 2 ? StepState.complete : StepState.indexed,
+            isActive: currentstep >= 2,
             title: const Text('Health Status'),
             content: newEntryPage3(context)),
         Step(
-            state: currentStep > 3 ? StepState.complete : StepState.indexed,
-            isActive: currentStep >= 3,
+            state: currentstep > 3 ? StepState.complete : StepState.indexed,
+            isActive: currentstep >= 3,
             title: const Text('Symptoms'),
             content: newEntryPage4(context)),
       ];
@@ -114,7 +119,8 @@ class _NewEntryState extends State<NewEntry> {
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+          color: const Color(0xFFC3DFFF),
+          borderRadius: BorderRadius.circular(50)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Stack(
@@ -271,6 +277,36 @@ class _NewEntryState extends State<NewEntry> {
     );
   }
 
+  dynamic boolRelativeDisease = {
+    'asthama': false,
+    'cancer': false,
+    'cardiac_disease': false,
+    'diabetes': false,
+    'hypertension': false,
+    'psychiatric_disorder': false,
+    'epilepsy': false,
+  };
+
+  dynamic boolCurrentSymptoms = {
+    'chest_pain': false,
+    'respiratory': false,
+    'cardiac_disease': false,
+    'cardiovascular': false,
+    'hematological': false,
+    'lymphatic': false,
+    'neurological': false,
+    'psychiatric': false,
+    'gastrointestinal': false,
+    'genitourinary': false,
+    'weight_gain': false,
+    'weight_loss': false,
+  };
+
+  dynamic boolCurrentMedicine = {
+    'yes': false,
+    'no': false,
+  };
+
   //SECTION - 3
   Container newEntryPage3(BuildContext context) {
     return Container(
@@ -278,7 +314,8 @@ class _NewEntryState extends State<NewEntry> {
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+          color: const Color(0xFFC3DFFF),
+          borderRadius: BorderRadius.circular(50)),
       child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -313,9 +350,435 @@ class _NewEntryState extends State<NewEntry> {
                   const Text(
                     'Check the conditions that apply to you or to any members of your immediate relatives',
                     style: kFieldHeading,
-                  )
+                  ),
+                  Row(
+                    children: <Widget>[
+                      const SizedBox(
+                        width: 10,
+                      ), //SizedBox
+                      const Text(
+                        'Asthama',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolRelativeDisease['asthama'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolRelativeDisease['asthama'] = value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Cancer',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolRelativeDisease['cancer'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolRelativeDisease['cancer'] = value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Cardiac Disease',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolRelativeDisease['cardiac_disease'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolRelativeDisease['cardiac_disease'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Diabetes',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolRelativeDisease['diabetes'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolRelativeDisease['diabetes'] = value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Hypertension',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolRelativeDisease['hypertension'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolRelativeDisease['hypertension'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Psychiatric disorder',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolRelativeDisease['psychiatric_disorder'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolRelativeDisease['psychiatric_disorder'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Epilepsy',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolRelativeDisease['epilepsy'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolRelativeDisease['epilepsy'] = value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      //Checkbox
+                    ], //<Widget>[]
+                  ),
                 ],
-              )
+              ),
+
+              //!SECTION3
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Check the symptoms that the patient is currently experiencing',
+                    style: kFieldHeading,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      const SizedBox(
+                        width: 10,
+                      ), //SizedBox
+                      const Text(
+                        'Chest pain',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['chest_pain'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['chest_pain'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Respiratory',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['respiratory'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['respiratory'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Cardiac Disease',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['cardiac_disease'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['cardiac_disease'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Cardiovascular',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['cardiovascular'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['cardiovascular'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Hematological',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['hematological'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['hematological'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Lymphatic',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['lymphatic'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['lymphatic'] = value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      //Checkbox
+                    ], //<Widget>[]
+                  ),
+                ],
+              ),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: <Widget>[
+                      const SizedBox(
+                        width: 10,
+                      ), //SizedBox
+                      const Text(
+                        'Neurological',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['neurological'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['neurological'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Psychiatric',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['psychiatric'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['psychiatric'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Gastrointestinal',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['gastrointestinal'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['gastrointestinal'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Genitourinary',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['genitourinary'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['genitourinary'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Weight gain',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['weight_gain'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['weight_gain'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ), //SizedBox
+                      const Text(
+                        'Weight loss',
+                        style: kCheckmarkText,
+                      ), //Text
+                      const SizedBox(width: 5), //SizedBox
+                      /** Checkbox Widget **/
+                      Checkbox(
+                        value: boolCurrentSymptoms['weight_loss'],
+                        onChanged: (bool? value) {
+                          setState(
+                            () {
+                              boolCurrentSymptoms['weight_loss'] =
+                                  value ?? false;
+                            },
+                          );
+                        },
+                      ),
+
+                      //Checkbox
+                    ], //<Widget>[]
+                  ),
+                ],
+              ),
             ],
           )),
     );
@@ -328,7 +791,10 @@ class _NewEntryState extends State<NewEntry> {
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+
+          color: const Color(0xFFC3DFFF),
+          borderRadius: BorderRadius.circular(50)),
+
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -379,7 +845,9 @@ class _NewEntryState extends State<NewEntry> {
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+          color: const Color(0xFFC3DFFF),
+          borderRadius: BorderRadius.circular(50)),
+
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -427,6 +895,43 @@ class _NewEntryState extends State<NewEntry> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
+
+    return Checkbox(
+      checkColor: Colors.white,
+      fillColor: MaterialStateProperty.resolveWith(getColor),
+      value: isChecked,
+      onChanged: (bool? value) {
+        setState(() {
+          isChecked = value!;
+        });
+      },
     );
   }
 }
