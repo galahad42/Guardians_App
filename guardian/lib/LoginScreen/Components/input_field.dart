@@ -5,10 +5,12 @@ class InputField extends StatelessWidget {
     Key? key,
     required this.hint,
     required this.iconData,
+    required this.controller,
   }) : super(key: key);
 
   final String hint;
   final IconData iconData;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class InputField extends StatelessWidget {
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(30),
           child: TextField(
+            controller: controller,
             textAlignVertical: TextAlignVertical.bottom,
             decoration: InputDecoration(
               border: OutlineInputBorder(

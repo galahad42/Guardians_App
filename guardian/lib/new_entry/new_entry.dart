@@ -18,27 +18,27 @@ class NewEntry extends StatefulWidget {
 }
 
 class _NewEntryState extends State<NewEntry> {
-  late TextEditingController _nameController = TextEditingController();
-  late TextEditingController _mobileNumberController = TextEditingController();
-  late TextEditingController _altMolbileNumberController =
+  late final TextEditingController _nameController = TextEditingController();
+  late final TextEditingController _mobileNumberController = TextEditingController();
+  late final TextEditingController _altMolbileNumberController =
       TextEditingController();
-  late TextEditingController _firstNameController = TextEditingController();
-  late TextEditingController _middleNameController = TextEditingController();
-  late TextEditingController _lastNameController = TextEditingController();
-  late TextEditingController _dobController = TextEditingController();
-  late TextEditingController _emailController = TextEditingController();
-  late TextEditingController _flatController = TextEditingController();
-  late TextEditingController _localityController = TextEditingController();
-  late TextEditingController _districtController = TextEditingController();
-  late TextEditingController _cityController = TextEditingController();
-  late TextEditingController _stateController = TextEditingController();
-  late TextEditingController _idProofController = TextEditingController();
-  late TextEditingController _symptomsController = TextEditingController();
-  late TextEditingController _diseasesController = TextEditingController();
-  late TextEditingController _heightController = TextEditingController();
-  late TextEditingController _weightController = TextEditingController();
+  late final TextEditingController _firstNameController = TextEditingController();
+  late final TextEditingController _middleNameController = TextEditingController();
+  late final TextEditingController _lastNameController = TextEditingController();
+  late final TextEditingController _dobController = TextEditingController();
+  late final TextEditingController _emailController = TextEditingController();
+  late final TextEditingController _flatController = TextEditingController();
+  late final TextEditingController _localityController = TextEditingController();
+  late final TextEditingController _districtController = TextEditingController();
+  late final TextEditingController _cityController = TextEditingController();
+  late final TextEditingController _stateController = TextEditingController();
+  late final TextEditingController _idProofController = TextEditingController();
+  late final TextEditingController _symptomsController = TextEditingController();
+  late final TextEditingController _diseasesController = TextEditingController();
+  late final TextEditingController _heightController = TextEditingController();
+  late final TextEditingController _weightController = TextEditingController();
 
-  int currentstep = 0;
+  int currentStep = 0;
   bool isCompleted = false;
   List<Step> getSteps() => [
         Step(
@@ -81,28 +81,28 @@ class _NewEntryState extends State<NewEntry> {
                   physics: const ScrollPhysics(),
                   steps: getSteps(),
                   type: StepperType.horizontal,
-                  currentStep: currentstep,
+                  currentStep: currentStep,
                   onStepContinue: () {
-                    final isLastStep = currentstep == getSteps().length - 1;
+                    final isLastStep = currentStep == getSteps().length - 1;
                     if (isLastStep) {
                       isCompleted = true;
                       //Send data to the server
                     } else {
                       setState(() {
-                        currentstep += 1;
+                        currentStep += 1;
                       });
                     }
                   },
                   onStepCancel: () {
-                    (currentstep == 0)
+                    (currentStep == 0)
                         ? null
                         : setState(() {
-                            currentstep -= 1;
+                            currentStep -= 1;
                           });
                   },
                   onStepTapped: (step) {
                     setState(() {
-                      currentstep = step;
+                      currentStep = step;
                     });
                   },
                 ),
@@ -791,8 +791,10 @@ class _NewEntryState extends State<NewEntry> {
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
+
           color: const Color(0xFFC3DFFF),
           borderRadius: BorderRadius.circular(50)),
+
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -845,6 +847,7 @@ class _NewEntryState extends State<NewEntry> {
       decoration: BoxDecoration(
           color: const Color(0xFFC3DFFF),
           borderRadius: BorderRadius.circular(50)),
+
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
