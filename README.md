@@ -1,4 +1,4 @@
-# BreezersHackathonProject
+# Breezers Hackathon Project
 
 This is a hackathon project made by the team Breezers for CyberCub Amity hackathon 2022 under the theme of <b>HealthCare</b>
 
