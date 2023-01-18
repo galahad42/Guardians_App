@@ -13,48 +13,48 @@ class NewEntry extends StatefulWidget {
 }
 
 class _NewEntryState extends State<NewEntry> {
-  late TextEditingController _nameController = TextEditingController();
-  late TextEditingController _mobileNumberController = TextEditingController();
-  late TextEditingController _altMolbileNumberController =
+  late final TextEditingController _nameController = TextEditingController();
+  late final TextEditingController _mobileNumberController = TextEditingController();
+  late final TextEditingController _altMolbileNumberController =
       TextEditingController();
-  late TextEditingController _firstNameController = TextEditingController();
-  late TextEditingController _middleNameController = TextEditingController();
-  late TextEditingController _lastNameController = TextEditingController();
-  late TextEditingController _dobController = TextEditingController();
-  late TextEditingController _emailController = TextEditingController();
-  late TextEditingController _flatController = TextEditingController();
-  late TextEditingController _localityController = TextEditingController();
-  late TextEditingController _districtController = TextEditingController();
-  late TextEditingController _cityController = TextEditingController();
-  late TextEditingController _stateController = TextEditingController();
-  late TextEditingController _idProofController = TextEditingController();
-  late TextEditingController _symptomsController = TextEditingController();
-  late TextEditingController _diseasesController = TextEditingController();
-  late TextEditingController _heightController = TextEditingController();
-  late TextEditingController _weightController = TextEditingController();
+  late final TextEditingController _firstNameController = TextEditingController();
+  late final TextEditingController _middleNameController = TextEditingController();
+  late final TextEditingController _lastNameController = TextEditingController();
+  late final TextEditingController _dobController = TextEditingController();
+  late final TextEditingController _emailController = TextEditingController();
+  late final TextEditingController _flatController = TextEditingController();
+  late final TextEditingController _localityController = TextEditingController();
+  late final TextEditingController _districtController = TextEditingController();
+  late final TextEditingController _cityController = TextEditingController();
+  late final TextEditingController _stateController = TextEditingController();
+  late final TextEditingController _idProofController = TextEditingController();
+  late final TextEditingController _symptomsController = TextEditingController();
+  late final TextEditingController _diseasesController = TextEditingController();
+  late final TextEditingController _heightController = TextEditingController();
+  late final TextEditingController _weightController = TextEditingController();
 
-  int currentstep = 0;
+  int currentStep = 0;
   bool isCompleted = false;
   List<Step> getSteps() => [
         Step(
-            state: currentstep > 0 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 0,
-            title: Text('ID Proof'),
+            state: currentStep > 0 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 0,
+            title: const Text('ID Proof'),
             content: newEntryPage1(context)),
         Step(
-            state: currentstep > 1 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 1,
-            title: Text('Personal Details'),
+            state: currentStep > 1 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 1,
+            title: const Text('Personal Details'),
             content: newEntryPage2(context)),
         Step(
-            state: currentstep > 2 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 2,
-            title: Text('Health Status'),
+            state: currentStep > 2 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 2,
+            title: const Text('Health Status'),
             content: newEntryPage3(context)),
         Step(
-            state: currentstep > 3 ? StepState.complete : StepState.indexed,
-            isActive: currentstep >= 3,
-            title: Text('Symptoms'),
+            state: currentStep > 3 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 3,
+            title: const Text('Symptoms'),
             content: newEntryPage4(context)),
       ];
 
@@ -65,39 +65,39 @@ class _NewEntryState extends State<NewEntry> {
         height: MediaQuery.of(context).size.height * 9,
         width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: isCompleted
             ? newEntryPage5(context)
             : Theme(
                 data: Theme.of(context).copyWith(
-                    colorScheme: ColorScheme.light(
+                    colorScheme: const ColorScheme.light(
                         primary: Color.fromARGB(255, 6, 53, 92))),
                 child: Stepper(
-                  physics: ScrollPhysics(),
+                  physics: const ScrollPhysics(),
                   steps: getSteps(),
                   type: StepperType.horizontal,
-                  currentStep: currentstep,
+                  currentStep: currentStep,
                   onStepContinue: () {
-                    final isLastStep = currentstep == getSteps().length - 1;
+                    final isLastStep = currentStep == getSteps().length - 1;
                     if (isLastStep) {
                       isCompleted = true;
                       //Send data to the server
                     } else {
                       setState(() {
-                        currentstep += 1;
+                        currentStep += 1;
                       });
                     }
                   },
                   onStepCancel: () {
-                    (currentstep == 0)
+                    (currentStep == 0)
                         ? null
                         : setState(() {
-                            currentstep -= 1;
+                            currentStep -= 1;
                           });
                   },
                   onStepTapped: (step) {
                     setState(() {
-                      currentstep = step;
+                      currentStep = step;
                     });
                   },
                 ),
@@ -112,9 +112,9 @@ class _NewEntryState extends State<NewEntry> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Stack(
@@ -147,9 +147,9 @@ class _NewEntryState extends State<NewEntry> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Color(0xFFC3DFFF),
+        color: const Color(0xFFC3DFFF),
         borderRadius: BorderRadius.circular(50),
       ),
       child: Padding(
@@ -161,7 +161,7 @@ class _NewEntryState extends State<NewEntry> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Adhar Card Number",
                   style: kFieldHeading,
                 ),
@@ -173,7 +173,7 @@ class _NewEntryState extends State<NewEntry> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Contacts",
                   style: kFieldHeading,
                 ),
@@ -193,7 +193,7 @@ class _NewEntryState extends State<NewEntry> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Patient's Name",
                   style: kFieldHeading,
                 ),
@@ -215,7 +215,7 @@ class _NewEntryState extends State<NewEntry> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Date of Birth",
                   style: kFieldHeading,
                 ),
@@ -227,7 +227,7 @@ class _NewEntryState extends State<NewEntry> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "E-mail",
                   style: kFieldHeading,
                 ),
@@ -240,7 +240,7 @@ class _NewEntryState extends State<NewEntry> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Address",
                   style: kFieldHeading,
                 ),
@@ -276,9 +276,9 @@ class _NewEntryState extends State<NewEntry> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
       child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -288,7 +288,7 @@ class _NewEntryState extends State<NewEntry> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Body Measurement',
                     style: kFieldHeading,
                   ),
@@ -296,7 +296,7 @@ class _NewEntryState extends State<NewEntry> {
                     children: [
                       _commonTextField(
                           hintText: 'height', controller: _heightController),
-                      SizedBox(
+                      const SizedBox(
                         width: 50,
                       ),
                       _commonTextField(
@@ -310,7 +310,7 @@ class _NewEntryState extends State<NewEntry> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Check the conditions that apply to you or to any members of your immediate relatives',
                     style: kFieldHeading,
                   )
@@ -326,39 +326,39 @@ class _NewEntryState extends State<NewEntry> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 110.0,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(
+                  const Text(
                     'Symptoms',
                     style: kFieldHeading,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   _commonTextField(
                       hintText: 'type here', controller: _symptomsController),
                 ]),
-                SizedBox(
+                const SizedBox(
                   width: 60.0,
                 ),
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(
+                  const Text(
                     'Diseases',
                     style: kFieldHeading,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   _commonTextField(
@@ -377,17 +377,17 @@ class _NewEntryState extends State<NewEntry> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
+          color: const Color(0xFFC3DFFF), borderRadius: BorderRadius.circular(50)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 110.0,
             ),
-            Icon(
+            const Icon(
               Icons.cloud_done,
               size: 100,
             )

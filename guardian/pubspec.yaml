@@ -33,8 +33,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  font_awesome_flutter: ^10.3.0
   google_fonts: ^3.0.1
+  google_maps_flutter: 2.2.0
+  google_maps_flutter_web: 0.4.0+2
+  font_awesome_flutter: ^10.3.0
+  firebase_core: ^2.4.1
+  cloud_firestore: ^4.3.1
+  firebase_auth: ^4.2.5
+
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -55,8 +61,7 @@ flutter:
     - assets/login_page/01.png
     - assets/login_page/02.png
     - assets/login_page/03.png
-    - assets/login_page/bottom1.png
-    - assets/login_page/id2.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:guardian/home.dart';
 import './Components/input_field.dart';
-import './Components/login_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../constants.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,11 +15,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   late final List<Widget> loginContent;
-  // final List<String> images = [
-  //   "assets/login_page/01.png",
-  //   "assets/login_page/02.png",
-  //   "assets/login_page/03.png",
-  // ];
+  final TextEditingController _emailController = TextEditingController(),
+                              _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -47,15 +46,15 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       const SizedBox(height: 8),
-      const InputField(hint: 'Email', iconData: Icons.mail_outline_rounded),
-      const InputField(hint: 'Password', iconData: Icons.lock_clock_outlined),
-      const LoginButton(title: 'Log In'),
+      InputField( hint: 'Email', iconData: Icons.mail_outline_rounded, controller: _emailController),
+      InputField(hint: 'Password', iconData: Icons.lock_clock_outlined, controller: _passwordController),
+      loginButton(),
     ];
 
     super.initState();
   }
 
-  Widget build(BuildContext context) {
+  build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF002B5B),
       body: Center(
@@ -80,10 +79,10 @@ class _LoginPageState extends State<LoginPage> {
                       items: [
                         //1st Image of Slider
                         Container(
-                          margin: EdgeInsets.all(6.0),
+                          margin: const EdgeInsets.all(6.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/login_page/01.png'),
                               fit: BoxFit.cover,
                             ),
@@ -92,10 +91,10 @@ class _LoginPageState extends State<LoginPage> {
 
                         //2nd Image of Slider
                         Container(
-                          margin: EdgeInsets.all(6.0),
+                          margin: const EdgeInsets.all(6.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/login_page/02.png'),
                               fit: BoxFit.cover,
                             ),
@@ -104,10 +103,10 @@ class _LoginPageState extends State<LoginPage> {
 
                         //3rd Image of Slider
                         Container(
-                          margin: EdgeInsets.all(6.0),
+                          margin: const EdgeInsets.all(6.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/login_page/03.png'),
                               fit: BoxFit.cover,
                             ),
@@ -117,7 +116,6 @@ class _LoginPageState extends State<LoginPage> {
 
                       //Slider Container properties
                       options: CarouselOptions(
-                        
                         height: MediaQuery.of(context).size.height * 0.9,
 
                         enlargeCenterPage: true,
@@ -125,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                         aspectRatio: 9 / 16,
                         autoPlayCurve: Curves.fastOutSlowIn,
                         enableInfiniteScroll: true,
-                        autoPlayAnimationDuration: Duration(milliseconds: 800),
+                        autoPlayAnimationDuration: const Duration(milliseconds: 800),
                         // viewportFraction: 0.8,
                       ),
                     ),
@@ -134,6 +132,37 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  loginButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+      child: ElevatedButton(
+        onPressed: () async {
+          await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
+          if(FirebaseAuth.instance.currentUser!.email != null) {
+            Navigator.push(context, MaterialPageRoute(builder: (_)=> const Home()));
+          }
+          else{
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Something went wrong')));
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: const StadiumBorder(),
+          backgroundColor: kSecondaryColor,
+          elevation: 8,
+          shadowColor: Colors.black87,
+        ),
+        child: const Text(
+          "Sign in",
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -149,7 +178,7 @@ class MyImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 5),
         child: FittedBox(
           fit: BoxFit.fill,
           child: Image.asset(
