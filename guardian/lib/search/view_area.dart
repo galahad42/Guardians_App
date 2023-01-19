@@ -11,7 +11,7 @@ class ViewArea {
     this.diseaseToPatientNo = const{},
   });
   ViewArea fromJson(Map<String, dynamic> str) => ViewArea(
-        diseaseToPatientNo: str["deceases"] as Map<String, int>,
+        diseaseToPatientNo: str["disease"] as Map<String, int>,
         name: str["name"],
         points: (str["points"] as List<GeoPoint>)
             .map((e) => LatLng(e.latitude, e.longitude))
