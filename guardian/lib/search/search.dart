@@ -16,7 +16,7 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   final _initialCameraPosition = CameraPosition(
       target: LatLng(28.667846270467965, 77.38681485285134), zoom: 15);
-  List<ViewArea> areas = [];
+  Set<Polygon> areas = {};
   @override
   void initState() {
     super.initState();
@@ -29,7 +29,7 @@ class _SearchState extends State<Search> {
     return Scaffold(
       body: GoogleMap(
         initialCameraPosition: _initialCameraPosition,
-        // polygons: ,
+        polygons: areas,
       ),
     );
   }
@@ -41,10 +41,15 @@ class _SearchState extends State<Search> {
         .get()
         .then((querySnapshot) {
       for (var result in querySnapshot.docs) {
-        log(result.data().toString());
-        ViewArea v = ViewArea().fromJson(result.data());
-        areas.add(v);
+        var data = result.data();
+        areas.add(Polygon(
+            polygonId: PolygonId(data['name']),
+            points: (data['points'] as List<dynamic>).map((e) {
+              log(e.latitude.toString() + " " + e.longitude.toString());
+              return LatLng(e.latitude, e.longitude);
+            }).toList(),
+            fillColor: Colors.red));
       }
-    }).then((value) => log(areas.length.toString()));
+    });
   }
 }
