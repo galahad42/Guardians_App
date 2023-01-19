@@ -30,6 +30,11 @@ class _HomeState extends State<Home> {
                   fit: BoxFit.fill),
             ),
             Positioned(
+              top: 5,
+              left: 560,
+              child: Image.asset('assets/login_page/logo.png'),
+            ),
+            Positioned(
               left: 10.0,
               top: 10.0,
               height: 330.0,
@@ -42,7 +47,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
                       width: 20.0,
