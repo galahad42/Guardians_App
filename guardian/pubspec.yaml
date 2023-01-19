@@ -42,6 +42,7 @@ dependencies:
   google_fonts: ^3.0.1
   google_maps_flutter: 2.2.0
   google_maps_flutter_web: 0.4.0+2
+  lottie: ^2.2.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -64,6 +65,11 @@ flutter:
     - assets/login_page/03.png
     - assets/login_page/Untitled.jpeg
     - assets/login_page/download.png
+    - assets/login_page/undraw_processing_thoughts_d8ha.png
+    - assets/login_page/logo.png
+    - assets/login_page/sucess.gif
+    - assets/success.json
+    - assets/login_page/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

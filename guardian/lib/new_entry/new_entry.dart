@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 const TextStyle kFieldHeading = TextStyle(
     fontSize: 20.0,
@@ -19,22 +20,30 @@ class NewEntry extends StatefulWidget {
 
 class _NewEntryState extends State<NewEntry> {
   late final TextEditingController _nameController = TextEditingController();
-  late final TextEditingController _mobileNumberController = TextEditingController();
+  late final TextEditingController _mobileNumberController =
+      TextEditingController();
   late final TextEditingController _altMolbileNumberController =
       TextEditingController();
-  late final TextEditingController _firstNameController = TextEditingController();
-  late final TextEditingController _middleNameController = TextEditingController();
-  late final TextEditingController _lastNameController = TextEditingController();
+  late final TextEditingController _firstNameController =
+      TextEditingController();
+  late final TextEditingController _middleNameController =
+      TextEditingController();
+  late final TextEditingController _lastNameController =
+      TextEditingController();
   late final TextEditingController _dobController = TextEditingController();
   late final TextEditingController _emailController = TextEditingController();
   late final TextEditingController _flatController = TextEditingController();
-  late final TextEditingController _localityController = TextEditingController();
-  late final TextEditingController _districtController = TextEditingController();
+  late final TextEditingController _localityController =
+      TextEditingController();
+  late final TextEditingController _districtController =
+      TextEditingController();
   late final TextEditingController _cityController = TextEditingController();
   late final TextEditingController _stateController = TextEditingController();
   late final TextEditingController _idProofController = TextEditingController();
-  late final TextEditingController _symptomsController = TextEditingController();
-  late final TextEditingController _diseasesController = TextEditingController();
+  late final TextEditingController _symptomsController =
+      TextEditingController();
+  late final TextEditingController _diseasesController =
+      TextEditingController();
   late final TextEditingController _heightController = TextEditingController();
   late final TextEditingController _weightController = TextEditingController();
 
@@ -54,12 +63,12 @@ class _NewEntryState extends State<NewEntry> {
         Step(
             state: currentStep > 2 ? StepState.complete : StepState.indexed,
             isActive: currentStep >= 2,
-            title: const Text('Health Status'),
+            title: const Text('Symptoms'),
             content: newEntryPage3(context)),
         Step(
             state: currentStep > 3 ? StepState.complete : StepState.indexed,
             isActive: currentStep >= 3,
-            title: const Text('Symptoms'),
+            title: const Text('Diagnosis'),
             content: newEntryPage4(context)),
       ];
 
@@ -138,8 +147,8 @@ class _NewEntryState extends State<NewEntry> {
             ),
             Positioned(
               //FIXME - image does not load
-              child: Image.asset('assets/login_page/id2.png'),
-              left: 500,
+              child: Image.asset("assets/login_page/undraw0.png"),
+              left: 900,
               top: 200,
             )
           ],
@@ -160,116 +169,130 @@ class _NewEntryState extends State<NewEntry> {
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            //!SECTION1
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Adhar Card Number",
-                  style: kFieldHeading,
-                ),
-                _commonTextField(
-                    hintText: 'enter here', controller: _nameController),
-              ],
-            ),
-            //!SECTION2
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Contacts",
-                  style: kFieldHeading,
-                ),
-                Row(
+                //!SECTION1
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const Text(
+                      "Adhar Card Number",
+                      style: kFieldHeading,
+                    ),
                     _commonTextField(
-                        hintText: 'mobile number',
-                        controller: _mobileNumberController),
-                    _commonTextField(
-                        hintText: 'alternate number',
-                        controller: _altMolbileNumberController),
+                        hintText: 'enter here', controller: _nameController),
                   ],
                 ),
-              ],
-            ),
-            //!SECTION3
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Patient's Name",
-                  style: kFieldHeading,
-                ),
-                Row(
+                //!SECTION2
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _commonTextField(
-                        hintText: 'First Name',
-                        controller: _firstNameController),
-                    _commonTextField(
-                        hintText: 'Middle Name',
-                        controller: _middleNameController),
-                    _commonTextField(
-                        hintText: "Last Name", controller: _lastNameController),
+                    const Text(
+                      "Contacts",
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: [
+                        _commonTextField(
+                            hintText: 'mobile number',
+                            controller: _mobileNumberController),
+                        _commonTextField(
+                            hintText: 'alternate number',
+                            controller: _altMolbileNumberController),
+                      ],
+                    ),
                   ],
-                )
-              ],
-            ),
-            //!SECTION4
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Date of Birth",
-                  style: kFieldHeading,
                 ),
-                _commonTextField(
-                    hintText: '01-01-2001', controller: _dobController),
-              ],
-            ),
-            //!SECTION5
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "E-mail",
-                  style: kFieldHeading,
+                //!SECTION3
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Patient's Name",
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: [
+                        _commonTextField(
+                            hintText: 'First Name',
+                            controller: _firstNameController),
+                        _commonTextField(
+                            hintText: 'Middle Name',
+                            controller: _middleNameController),
+                        _commonTextField(
+                            hintText: "Last Name",
+                            controller: _lastNameController),
+                      ],
+                    )
+                  ],
                 ),
-                _commonTextField(
-                    hintText: 'abc123@gmail.com', controller: _emailController),
-              ],
-            ),
+                //!SECTION4
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Date of Birth",
+                      style: kFieldHeading,
+                    ),
+                    _commonTextField(
+                        hintText: '01-01-2001', controller: _dobController),
+                  ],
+                ),
+                //!SECTION5
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "E-mail",
+                      style: kFieldHeading,
+                    ),
+                    _commonTextField(
+                        hintText: 'abc123@gmail.com',
+                        controller: _emailController),
+                  ],
+                ),
 
-            //!SECTION6
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Address",
-                  style: kFieldHeading,
-                ),
-                Row(
+                //!SECTION6
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _commonTextField(
-                        hintText: 'flat/house number',
-                        controller: _flatController),
-                    _commonTextField(
-                        hintText: 'locality', controller: _localityController),
-                    _commonTextField(
-                        hintText: "district", controller: _districtController),
-                  ],
-                ),
-                Row(
-                  children: [
-                    _commonTextField(
-                        hintText: 'city', controller: _cityController),
-                    _commonTextField(
-                        hintText: 'state', controller: _stateController),
+                    const Text(
+                      "Address",
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: [
+                        _commonTextField(
+                            hintText: 'flat/house number',
+                            controller: _flatController),
+                        _commonTextField(
+                            hintText: 'locality',
+                            controller: _localityController),
+                        _commonTextField(
+                            hintText: "district",
+                            controller: _districtController),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        _commonTextField(
+                            hintText: 'city', controller: _cityController),
+                        _commonTextField(
+                            hintText: 'state', controller: _stateController),
+                      ],
+                    ),
                   ],
                 ),
               ],
+            ),
+            Positioned(
+              //FIXME - image does not load
+              child: Image.asset("assets/login_page/undraw2.png"),
+              left: 900,
+              top: 300,
             ),
           ],
         ),
@@ -307,6 +330,24 @@ class _NewEntryState extends State<NewEntry> {
     'no': false,
   };
 
+  dynamic boolGender = {
+    'm': false,
+    'f': false,
+  };
+
+  dynamic boolMedcationAllergies = {
+    'yes': false,
+    'no': false,
+  };
+
+  dynamic boolAlcoholConsumption = {
+    'daily': false,
+    'weekly': false,
+    'monthly': false,
+    'ocasionally': false,
+    'never': false,
+  };
+
   //SECTION - 3
   Container newEntryPage3(BuildContext context) {
     return Container(
@@ -317,470 +358,670 @@ class _NewEntryState extends State<NewEntry> {
           color: const Color(0xFFC3DFFF),
           borderRadius: BorderRadius.circular(50)),
       child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //!SECTION1
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Body Measurement',
-                    style: kFieldHeading,
-                  ),
-                  Row(
-                    children: [
-                      _commonTextField(
-                          hintText: 'height', controller: _heightController),
-                      const SizedBox(
-                        width: 50,
-                      ),
-                      _commonTextField(
-                          hintText: 'weight', controller: _weightController),
-                    ],
-                  ),
-                ],
-              ),
+        padding: const EdgeInsets.all(16.0),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //!SECTION1
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Body Measurement',
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: [
+                        _commonTextField(
+                            hintText: 'height', controller: _heightController),
+                        const SizedBox(
+                          width: 50,
+                        ),
+                        _commonTextField(
+                            hintText: 'weight', controller: _weightController),
+                      ],
+                    ),
+                  ],
+                ),
 
-              //!SECTION2
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Check the conditions that apply to you or to any members of your immediate relatives',
-                    style: kFieldHeading,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      const SizedBox(
-                        width: 10,
-                      ), //SizedBox
-                      const Text(
-                        'Asthama',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolRelativeDisease['asthama'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolRelativeDisease['asthama'] = value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                //!SECTION2
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      'Check the conditions that apply to you or to any members of your immediate relatives',
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Asthama',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolRelativeDisease['asthama'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolRelativeDisease['asthama'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Cancer',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolRelativeDisease['cancer'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolRelativeDisease['cancer'] = value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Cancer',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolRelativeDisease['cancer'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolRelativeDisease['cancer'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Cardiac Disease',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolRelativeDisease['cardiac_disease'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolRelativeDisease['cardiac_disease'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Cardiac Disease',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolRelativeDisease['cardiac_disease'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolRelativeDisease['cardiac_disease'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Diabetes',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolRelativeDisease['diabetes'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolRelativeDisease['diabetes'] = value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Diabetes',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolRelativeDisease['diabetes'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolRelativeDisease['diabetes'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Hypertension',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolRelativeDisease['hypertension'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolRelativeDisease['hypertension'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Hypertension',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolRelativeDisease['hypertension'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolRelativeDisease['hypertension'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Psychiatric disorder',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolRelativeDisease['psychiatric_disorder'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolRelativeDisease['psychiatric_disorder'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Psychiatric disorder',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolRelativeDisease['psychiatric_disorder'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolRelativeDisease['psychiatric_disorder'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Epilepsy',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolRelativeDisease['epilepsy'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolRelativeDisease['epilepsy'] = value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Epilepsy',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolRelativeDisease['epilepsy'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolRelativeDisease['epilepsy'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      //Checkbox
-                    ], //<Widget>[]
-                  ),
-                ],
-              ),
+                        //Checkbox
+                      ], //<Widget>[]
+                    ),
+                  ],
+                ),
 
-              //!SECTION3
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Check the symptoms that the patient is currently experiencing',
-                    style: kFieldHeading,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      const SizedBox(
-                        width: 10,
-                      ), //SizedBox
-                      const Text(
-                        'Chest pain',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['chest_pain'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['chest_pain'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                //!SECTION3
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 30,
+                    ),
+                    const Text(
+                      'Check the symptoms that the patient is currently experiencing',
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Chest pain',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['chest_pain'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['chest_pain'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Respiratory',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['respiratory'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['respiratory'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Respiratory',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['respiratory'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['respiratory'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Cardiac Disease',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['cardiac_disease'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['cardiac_disease'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Cardiac Disease',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['cardiac_disease'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['cardiac_disease'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Cardiovascular',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['cardiovascular'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['cardiovascular'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Cardiovascular',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['cardiovascular'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['cardiovascular'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Hematological',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['hematological'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['hematological'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Hematological',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['hematological'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['hematological'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Lymphatic',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['lymphatic'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['lymphatic'] = value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Lymphatic',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['lymphatic'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['lymphatic'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      //Checkbox
-                    ], //<Widget>[]
-                  ),
-                ],
-              ),
+                        //Checkbox
+                      ], //<Widget>[]
+                    ),
+                  ],
+                ),
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: <Widget>[
-                      const SizedBox(
-                        width: 10,
-                      ), //SizedBox
-                      const Text(
-                        'Neurological',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['neurological'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['neurological'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 10,
+                        ), //SizedBox
+                        const Text(
+                          'Neurological',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['neurological'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['neurological'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Psychiatric',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['psychiatric'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['psychiatric'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Psychiatric',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['psychiatric'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['psychiatric'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Gastrointestinal',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['gastrointestinal'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['gastrointestinal'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Gastrointestinal',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['gastrointestinal'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['gastrointestinal'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Genitourinary',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['genitourinary'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['genitourinary'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Genitourinary',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['genitourinary'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['genitourinary'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Weight gain',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['weight_gain'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['weight_gain'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Weight gain',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['weight_gain'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['weight_gain'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      const SizedBox(
-                        width: 20,
-                      ), //SizedBox
-                      const Text(
-                        'Weight loss',
-                        style: kCheckmarkText,
-                      ), //Text
-                      const SizedBox(width: 5), //SizedBox
-                      /** Checkbox Widget **/
-                      Checkbox(
-                        value: boolCurrentSymptoms['weight_loss'],
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              boolCurrentSymptoms['weight_loss'] =
-                                  value ?? false;
-                            },
-                          );
-                        },
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Weight loss',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentSymptoms['weight_loss'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentSymptoms['weight_loss'] =
+                                    value ?? false;
+                              },
+                            );
+                          },
+                        ),
 
-                      //Checkbox
-                    ], //<Widget>[]
-                  ),
-                ],
-              ),
-            ],
-          )),
+                        //Checkbox
+                      ], //<Widget>[]
+                    ),
+                  ],
+                ),
+
+                //!SECTION3
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      'Are you currently taking any medication?',
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Yes',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentMedicine['yes'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentMedicine['yes'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
+
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'No',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolCurrentMedicine['no'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolCurrentMedicine['no'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
+
+                        //Checkbox
+                      ], //<Widget>[]
+                    ),
+                  ],
+                ),
+
+                //!SECTION4
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      'What is your gender?',
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Male',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolGender['m'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolGender['m'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
+
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Female',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolGender['f'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolGender['f'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
+
+                        //Checkbox
+                      ], //<Widget>[]
+                    ),
+                  ],
+                ),
+
+                //!SECTION5
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      'Do you have any medication allergies',
+                      style: kFieldHeading,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'Yes',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolMedcationAllergies['yes'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolMedcationAllergies['yes'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
+
+                        const SizedBox(
+                          width: 20,
+                        ), //SizedBox
+                        const Text(
+                          'NO',
+                          style: kCheckmarkText,
+                        ), //Text
+                        const SizedBox(width: 5), //SizedBox
+                        /** Checkbox Widget **/
+                        Checkbox(
+                          value: boolMedcationAllergies['no'],
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                boolMedcationAllergies['no'] = value ?? false;
+                              },
+                            );
+                          },
+                        ),
+
+                        //Checkbox
+                      ], //<Widget>[]
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Positioned(
+              //FIXME - image does not load
+              child: Image.asset("assets/login_page/undraw3.png"),
+              left: 900,
+              top: 400,
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -791,47 +1032,61 @@ class _NewEntryState extends State<NewEntry> {
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-
           color: const Color(0xFFC3DFFF),
           borderRadius: BorderRadius.circular(50)),
-
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: Stack(
           children: [
-            const SizedBox(
-              height: 110.0,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
               children: [
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const Text(
-                    'Symptoms',
-                    style: kFieldHeading,
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  _commonTextField(
-                      hintText: 'type here', controller: _symptomsController),
-                ]),
                 const SizedBox(
-                  width: 60.0,
+                  height: 110.0,
                 ),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const Text(
-                    'Diseases',
-                    style: kFieldHeading,
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  _commonTextField(
-                      hintText: 'type here', controller: _diseasesController),
-                ]),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Symptoms',
+                            style: kFieldHeading,
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          _commonTextField(
+                              hintText: 'type here',
+                              controller: _symptomsController),
+                        ]),
+                    const SizedBox(
+                      width: 60.0,
+                    ),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Diseases',
+                            style: kFieldHeading,
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          _commonTextField(
+                              hintText: 'type here',
+                              controller: _diseasesController),
+                        ]),
+                  ],
+                ),
               ],
             ),
+            Positioned(
+              //FIXME - image does not load
+              child: Image.asset("assets/login_page/undraw5.png"),
+              left: 900,
+              bottom: 0,
+            )
           ],
         ),
       ),
@@ -847,7 +1102,6 @@ class _NewEntryState extends State<NewEntry> {
       decoration: BoxDecoration(
           color: const Color(0xFFC3DFFF),
           borderRadius: BorderRadius.circular(50)),
-
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -855,10 +1109,22 @@ class _NewEntryState extends State<NewEntry> {
             const SizedBox(
               height: 110.0,
             ),
-            const Icon(
-              Icons.cloud_done,
-              size: 100,
-            )
+            Lottie.asset(
+              'assets/success.json',
+              width: 200,
+              height: 200,
+              fit: BoxFit.fill,
+              
+            ),
+            SizedBox(
+              height: 50.0,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('RESET'), //FIXME - add reset method
+            ),
           ],
         ),
       ),
