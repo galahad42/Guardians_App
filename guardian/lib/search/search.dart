@@ -13,15 +13,15 @@ class Search extends StatefulWidget {
   State<Search> createState() => _SearchState();
 }
 
+Set<Polygon> areas = {};
+
 class _SearchState extends State<Search> {
   final _initialCameraPosition = CameraPosition(
       target: LatLng(28.667846270467965, 77.38681485285134), zoom: 15);
-  Set<Polygon> areas = {};
   @override
   void initState() {
     super.initState();
     getData();
-    areas.map((e) => log(e.points.toString()));
   }
 
   @override
@@ -35,21 +35,27 @@ class _SearchState extends State<Search> {
   }
 
   getData() async {
+    areas = {};
     log(areas.length.toString());
-    await FirebaseFirestore.instance
-        .collection('view')
-        .get()
-        .then((querySnapshot) {
-      for (var result in querySnapshot.docs) {
-        var data = result.data();
-        areas.add(Polygon(
+    await FirebaseFirestore.instance.collection('view').get().then(
+      (querySnapshot) {
+        for (var result in querySnapshot.docs) {
+          var data = result.data();
+          Polygon p = Polygon(
             polygonId: PolygonId(data['name']),
-            points: (data['points'] as List<dynamic>).map((e) {
-              log(e.latitude.toString() + " " + e.longitude.toString());
-              return LatLng(e.latitude, e.longitude);
-            }).toList(),
-            fillColor: Colors.red));
-      }
-    });
+            points: (data['points'] as List<dynamic>).map(
+              (e) {
+                // log("${e.latitude} ${e.longitude}");
+                return LatLng(e.latitude, e.longitude);
+              },
+            ).toList(),
+          );
+          log(p.polygonId.toString());
+          log(p.points.toString());
+          log(areas.length.toString());
+          areas.add(p);
+        }
+      },
+    );
   }
 }
