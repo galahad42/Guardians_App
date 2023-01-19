@@ -15,6 +15,9 @@ Design a system(hardware/software) for monitoring health parameters of Patients.
 - Flutter
 - Firebase
 
+## 🎥 Preview
+https://user-images.githubusercontent.com/59364507/213518496-a5ce4ed1-327d-4614-8c51-81744ef66b6c.mp4
+
 
 ## 📋  Contributing
 
