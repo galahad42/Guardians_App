@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      home: Search(),
-
+      home: LoginPage(),
+      //enter credentials email    - breezers.wins@gmail.com
+      //                  password - 12345678
     );
   }
 }
