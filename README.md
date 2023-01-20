@@ -23,5 +23,11 @@ https://user-images.githubusercontent.com/59364507/213518496-a5ce4ed1-327d-4614-
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## 📓 Contributors
+
+- [Aniket Shisodia](https://github.com/aniketshisodia)
+- [Dhruv Bansal](https://github.com/MRfantastic3DGamer)
+- [Anshuman Pandey](https://github.com/anshu-6537)
+- [Amrit Anand](https://github.com/galahad42)
 ## 📜  License
 [MIT](./LICENSE)
